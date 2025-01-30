@@ -6,16 +6,16 @@ users accessing those files.
 
 ## Features
 
- -File Upload Vulnerability: A Flask app that allows users to upload any type of file without validation or checks, making it 
-susceptible to malicious file uploads (such as HTML, JavaScript, etc.).
- -Malicious File Execution: Demonstrates how an attacker can upload a file with embedded JavaScript and execute malicious scripts on the client side.
- -No File Type Restriction: No control on file types, allowing potentially dangerous files (e.g., .html, .js) to be uploaded.
-No Authentication: The application lacks authentication, meaning anyone can upload files without restriction.
+ - File Upload Vulnerability: A Flask app that allows users to upload any type of file without validation or checks, making it 
+  susceptible to malicious file uploads (such as HTML, JavaScript, etc.).
+ - Malicious File Execution: Demonstrates how an attacker can upload a file with embedded JavaScript and execute malicious scripts on the client side.
+ - No File Type Restriction: No control on file types, allowing potentially dangerous files (e.g., .html, .js) to be uploaded.
+ - No Authentication: The application lacks authentication, meaning anyone can upload files without restriction.
 
 ## Prerequisites
 
-Docker: Install Docker on your machine.
-Python: Ensure you have Python 3.8 or higher if you plan to run the app outside of Docker.
+- Docker: Install Docker on your machine.
+- Python: Ensure you have Python 3.8 or higher if you plan to run the app outside of Docker.
 
 ## Installation
 
@@ -76,10 +76,11 @@ If the file is executed: The alert should trigger, indicating that the JavaScrip
 If the file is not executed: The application might be slightly secured by browser protections or you might have certain security configurations that prevent JavaScript execution.
 
 ## Risks and Mitigations
-This type of vulnerability is common in applications that do not properly sanitize or restrict uploaded files. Potential risks include:
-XSS Attacks: Malicious files uploaded by attackers could execute harmful scripts on the user's browser, leading to information theft, 
-session hijacking, or defacement of the site.
-Denial of Service: Large files or unexpected file formats might overwhelm the server or storage system, causing service disruptions.
+- This type of vulnerability is common in applications that do not properly sanitize or restrict uploaded files.
+- Potential risks include:
+    - XSS Attacks: Malicious files uploaded by attackers could execute harmful scripts on the user's browser, leading to information theft, 
+    session hijacking, or defacement of the site.
+    - Denial of Service: Large files or unexpected file formats might overwhelm the server or storage system, causing service disruptions.
 
 
 
