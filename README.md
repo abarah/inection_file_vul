@@ -81,9 +81,3 @@ If the file is not executed: The application might be slightly secured by browse
     - XSS Attacks: Malicious files uploaded by attackers could execute harmful scripts on the user's browser, leading to information theft, 
     session hijacking, or defacement of the site.
     - Denial of Service: Large files or unexpected file formats might overwhelm the server or storage system, causing service disruptions.
-
-
-
-
-
-
