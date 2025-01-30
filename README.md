@@ -62,30 +62,24 @@ Create a malicious file named malicious.html with the following content:
 </html>
 
 ```
-Example 1: List Running Containers
+Use the web interface to upload this file. After the upload, the file will be accessible at the following URL:
 ```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"command\": \"ps\"}" http://127.0.0.1:5000/vulnerable
+http://localhost:5000/uploads/malicious.html
 ```
-Example 2: List All Containers (Including Stopped)
-```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"command\": \"ps -a\"}" http://127.0.0.1:5000/vulnerable
-```
-Example 3: Inspect a Container
-```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"command\": \"inspect <container_id>\"}" http://127.0.0.1:5000/vulnerable
-```
-Example 4: Execute a Command Inside a Container (e.g., bash)
-```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"command\": \"exec <container_id> bash\"}" http://127.0.0.1:5000/vulnerable
-```
-Example 5: Stop a Container
-```bash
-curl -X POST -H "Content-Type: application/json" -d "{\"command\": \"stop <container_id>\"}" http://127.0.0.1:5000/vulnerable
-```
-You can replace <container_id> with actual IDs obtained from the ps command.
+3. Access the Malicious File
+Once the file is uploaded, navigate to its URL to test if the malicious JavaScript code is executed.
+The browser should show an alert indicating the script has been executed.
 
 ## Observing the Results
-After sending requests, check the Flask server logs to observe the Docker commands being executed and their results. If the API is exposed to the public, an attacker could remotely execute arbitrary commands on the host machine, compromising security.
+After uploading the file and accessing it via the provided URL, you should observe the following:
+If the file is executed: The alert should trigger, indicating that the JavaScript code inside the HTML file was executed. This demonstrates the vulnerability of the application to Cross-Site Scripting (XSS) attacks.
+If the file is not executed: The application might be slightly secured by browser protections or you might have certain security configurations that prevent JavaScript execution.
+
+## Risks and Mitigations
+This type of vulnerability is common in applications that do not properly sanitize or restrict uploaded files. Potential risks include:
+XSS Attacks: Malicious files uploaded by attackers could execute harmful scripts on the user's browser, leading to information theft, 
+session hijacking, or defacement of the site.
+Denial of Service: Large files or unexpected file formats might overwhelm the server or storage system, causing service disruptions.
 
 
 
